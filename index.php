@@ -22,9 +22,24 @@ $root->loadById(3);*/
 //$search = Usuario::search("ro");
 //echo json_encode($search);
 
-$usuario = new Usuario();
-$usuario->login("Marcos", "qwerty");
+//$usuario = new Usuario();
+//$usuario->login("Marcos", "qwerty");
+//echo $usuario;
 
+/*$aluno = new Usuario("aluno", "@lun0"); método para fazer uma inserção
+
+$aluno->setDeslogin("aluno");
+$aluno->setDessenha("@lun0");
+
+$aluno->insert();
+
+echo $aluno;*/
+
+//Método para fazer uma atualização
+
+$usuario = new Usuario();
+$usuario->loadById(2);
+$usuario->update("Alan", "1$5@6%");
 echo $usuario;
 
 ?>
