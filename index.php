@@ -36,10 +36,13 @@ $aluno->insert();
 echo $aluno;*/
 
 //Método para fazer uma atualização
-
-$usuario = new Usuario();
+/*$usuario = new Usuario();
 $usuario->loadById(2);
 $usuario->update("Alan", "1$5@6%");
-echo $usuario;
+echo $usuario;*/
 
+$usuario = new Usuario();
+$usuario->loadById(6);
+$usuario->delete();
+echo $usuario;
 ?>

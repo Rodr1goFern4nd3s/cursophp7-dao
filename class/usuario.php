@@ -115,10 +115,25 @@ class Usuario {
         $sql = new Sql();
 
         $sql->query("UPDATE tb_usuario SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID", array(
-            'LOGIN'=>$this->getDeslogin(),
-            'PASSWORD'=>$this->getDessenha(),
-            'ID'=>$this->getIdusuario()
+            ':LOGIN'=>$this->getDeslogin(),
+            ':PASSWORD'=>$this->getDessenha(),
+            ':ID'=>$this->getIdusuario()
         ));
+    }
+
+    public function delete() {
+        $sql = new Sql();
+
+        //para apagar do banco
+        $sql->query("DELETE FROM tb_usuario WHERE idusuario = :ID", array(
+            ':ID'=>$this->getIdusuario()
+        ));
+
+        //Para refletir tambem no objeto
+        $this->setIdusuario(0);
+        $this->setDeslogin("");
+        $this->setDessenha("");
+        $this->setDtcadastro(new DateTime());
     }
 
     public function __construct($login = "", $password = "") {
