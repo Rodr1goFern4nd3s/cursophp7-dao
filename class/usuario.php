@@ -54,13 +54,13 @@ class Usuario {
         }
     }
 
-    public static function getList() {
+    public static function getList() { //Retorna uma lista ordenada por deslogin
         $sql = new Sql();
 
         return $sql->select("SELECT * FROM tb_usuario ORDER BY deslogin;");
     }
 
-    public static function search($login) {
+    public static function search($login) { //Retorna valores de usuarios juntamente com o que foi passado no parâmetro
         $sql = new Sql();
 
         return $sql->select("SELECT * FROM tb_usuario WHERE deslogin LIKE :SEARCH ORDER BY deslogin", array(
@@ -68,7 +68,7 @@ class Usuario {
         ));
     }
 
-    public function login($login, $password) {
+    public function login($login, $password) { //Carrega um usuário por login e senha 
         
         $sql = new Sql();
 
@@ -95,7 +95,7 @@ class Usuario {
         $this->setDtcadastro(new DateTime($data['dtcadastro']));
     }
 
-    public function insert() {
+    public function insert() { //Método para realização de inserção
         $sql = new Sql();
 
         $results = $sql->select("CALL sp_usuario_insert(:LOGIN, :PASSWORD)", array(
@@ -108,7 +108,7 @@ class Usuario {
         }
     }
 
-    public function update($login, $password) {
+    public function update($login, $password) { //Método para realização de atualização
         $this->setDeslogin($login);
         $this->setDessenha($password);
 
@@ -121,7 +121,7 @@ class Usuario {
         ));
     }
 
-    public function delete() {
+    public function delete() { //Método para realização de deleção
         $sql = new Sql();
 
         //para apagar do banco
